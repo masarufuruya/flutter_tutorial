@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 
 class Category extends StatelessWidget {
   final icon;
+  final activeBackgroundColor;
   final color;
   final text;
 
   const Category(
-      {@required this.icon, @required this.color, @required this.text});
+      {@required this.icon,
+      @required this.color,
+      @required this.activeBackgroundColor,
+      @required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +18,7 @@ class Category extends StatelessWidget {
         width: double.infinity,
         padding: EdgeInsets.all(8),
         child: FlatButton(
-            splashColor: Colors.green,
+            highlightColor: activeBackgroundColor,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(50))),
             child: Row(

@@ -28,11 +28,12 @@ class CategoryRoute extends StatelessWidget {
 
   List<Widget> buildCategoryList() {
     List<Widget> list = [];
-    _categoryNames.forEach((categoryName) {
+    _categoryNames.asMap().forEach((index, categoryName) {
       list.add(Center(
           child: Category(
         icon: Icons.cake,
         color: Colors.black,
+        activeBackgroundColor: _baseColors[index],
         text: categoryName,
       )));
     });
@@ -46,12 +47,12 @@ class CategoryRoute extends StatelessWidget {
         children: buildCategoryList());
 
     final appBar = AppBar(
+      backgroundColor: Colors.green[100],
       elevation: 0,
       title: const Text(
         'Unit Converter',
         style: TextStyle(
-          fontSize: 30,
-        ),
+            fontSize: 30, color: Colors.black, fontWeight: FontWeight.bold),
       ),
     );
 
