@@ -26,14 +26,24 @@ class CategoryRoute extends StatelessWidget {
     Colors.red,
   ];
 
+  List<Widget> buildCategoryList() {
+    List<Widget> list = [];
+    _categoryNames.forEach((categoryName) {
+      list.add(Center(
+          child: Category(
+        icon: Icons.cake,
+        color: Colors.black,
+        text: categoryName,
+      )));
+    });
+    return list;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final listView = Center(
-        child: Category(
-      icon: Icons.cake,
-      color: Colors.black,
-      text: 'Cake',
-    ));
+    final listView = ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        children: buildCategoryList());
 
     final appBar = AppBar(
       elevation: 0,
