@@ -2,6 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'unit.dart';
 
+class ConverterAppBar extends StatelessWidget {
+  final String title;
+
+  const ConverterAppBar({@required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(title: Text(title));
+  }
+}
+
 class ConverterRoute extends StatelessWidget {
   /// Units for this [Category].
   final List<Unit> units;
