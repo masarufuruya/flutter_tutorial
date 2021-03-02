@@ -15,6 +15,10 @@ class Category extends StatelessWidget {
       @required this.text,
       @required this.units});
 
+  void _navigateToConverter(BuildContext context) {
+    Navigator.of(context).pushNamed('/cover');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,7 +44,7 @@ class Category extends StatelessWidget {
             textColor: color,
             height: 100,
             onPressed: () {
-              print('dddd');
+              _navigateToConverter(context);
             }));
   }
 }
