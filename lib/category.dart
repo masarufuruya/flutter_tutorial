@@ -15,8 +15,8 @@ class Category extends StatelessWidget {
       @required this.text,
       @required this.units});
 
-  void _navigateToConverter(BuildContext context) {
-    Navigator.of(context).pushNamed('/cover');
+  void _navigateToConverter(BuildContext context, String categoryName) {
+    Navigator.of(context).pushNamed('/cover', arguments: categoryName);
   }
 
   @override
@@ -44,7 +44,7 @@ class Category extends StatelessWidget {
             textColor: color,
             height: 100,
             onPressed: () {
-              _navigateToConverter(context);
+              _navigateToConverter(context, text);
             }));
   }
 }

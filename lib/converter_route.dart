@@ -14,7 +14,6 @@ class ConverterAppBar extends StatelessWidget {
 }
 
 class ConverterRoute extends StatelessWidget {
-  /// Units for this [Category].
   final List<Unit> units;
 
   const ConverterRoute({
@@ -42,7 +41,13 @@ class ConverterRoute extends StatelessWidget {
       );
     }).toList();
 
+    final appBar = AppBar(
+        backgroundColor: Colors.green[100],
+        elevation: 0,
+        title: Text(ModalRoute.of(context).settings.arguments));
+
     return Scaffold(
+        appBar: appBar,
         backgroundColor: Colors.green[100],
         body: ListView(
           children: unitWidgets,
