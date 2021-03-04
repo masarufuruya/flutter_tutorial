@@ -14,12 +14,7 @@ class UnitConverterApp extends StatelessWidget {
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => CategoryRoute(),
-        '/cover': (BuildContext context) => ConverterRoute(
-              units: [
-                Unit(name: 'hoge', conversion: 1),
-                Unit(name: 'fuga', conversion: 2)
-              ],
-            )
+        '/cover': (BuildContext context) => ConverterRoute()
       },
       debugShowCheckedModeBanner: false,
       title: 'Unit Converter',

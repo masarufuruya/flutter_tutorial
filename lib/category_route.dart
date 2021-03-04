@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'category.dart';
+import 'unit.dart';
 
 class CategoryRoute extends StatelessWidget {
   const CategoryRoute();
@@ -26,16 +27,26 @@ class CategoryRoute extends StatelessWidget {
     Colors.red,
   ];
 
+  List<Unit> _retrieveUnitList(String categoryName) {
+    return List.generate(10, (int i) {
+      i += 1;
+      return Unit(
+        name: '$categoryName Unit $i',
+        conversion: i.toDouble(),
+      );
+    });
+  }
+
   List<Widget> buildCategoryList() {
     List<Widget> list = [];
     _categoryNames.asMap().forEach((index, categoryName) {
       list.add(Center(
           child: Category(
-        icon: Icons.cake,
-        color: Colors.black,
-        activeBackgroundColor: _baseColors[index],
-        text: categoryName,
-      )));
+              icon: Icons.cake,
+              color: Colors.black,
+              activeBackgroundColor: _baseColors[index],
+              text: categoryName,
+              units: _retrieveUnitList(categoryName))));
     });
     return list;
   }

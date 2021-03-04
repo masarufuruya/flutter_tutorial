@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'unit.dart';
+import 'category.dart';
 
 class ConverterAppBar extends StatelessWidget {
   final String title;
@@ -14,15 +15,16 @@ class ConverterAppBar extends StatelessWidget {
 }
 
 class ConverterRoute extends StatelessWidget {
-  final List<Unit> units;
-
-  const ConverterRoute({
-    @required this.units,
-  }) : assert(units != null);
-
   @override
   Widget build(BuildContext context) {
-    final unitWidgets = units.map((Unit unit) {
+    final CoverArguments args = ModalRoute.of(context).settings.arguments;
+
+    final appBar = AppBar(
+        backgroundColor: Colors.green[100],
+        elevation: 0,
+        title: Text(args.categoryName));
+
+    final unitWidgets = args.units.map((Unit unit) {
       return Container(
         margin: EdgeInsets.all(8.0),
         padding: EdgeInsets.all(16.0),
@@ -40,11 +42,6 @@ class ConverterRoute extends StatelessWidget {
         ),
       );
     }).toList();
-
-    final appBar = AppBar(
-        backgroundColor: Colors.green[100],
-        elevation: 0,
-        title: Text(ModalRoute.of(context).settings.arguments));
 
     return Scaffold(
         appBar: appBar,

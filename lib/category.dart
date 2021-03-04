@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'unit.dart';
 
+class CoverArguments {
+  final String categoryName;
+  final List<Unit> units;
+
+  CoverArguments(this.categoryName, this.units);
+}
+
 class Category extends StatelessWidget {
   final IconData icon;
   final activeBackgroundColor;
@@ -16,7 +23,8 @@ class Category extends StatelessWidget {
       @required this.units});
 
   void _navigateToConverter(BuildContext context, String categoryName) {
-    Navigator.of(context).pushNamed('/cover', arguments: categoryName);
+    Navigator.of(context)
+        .pushNamed('/cover', arguments: CoverArguments(categoryName, units));
   }
 
   @override
