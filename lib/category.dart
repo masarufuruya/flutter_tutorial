@@ -2,29 +2,31 @@ import 'package:flutter/material.dart';
 import 'unit.dart';
 
 class CoverArguments {
+  final Color categoryColor;
   final String categoryName;
   final List<Unit> units;
 
-  CoverArguments(this.categoryName, this.units);
+  CoverArguments(this.categoryColor, this.categoryName, this.units);
 }
 
 class Category extends StatelessWidget {
   final IconData icon;
-  final activeBackgroundColor;
-  final color;
+  final Color activeBackgroundColor;
+  final Color textColor;
   final String text;
   final List<Unit> units;
 
   const Category(
       {@required this.icon,
-      @required this.color,
+      @required this.textColor,
       @required this.activeBackgroundColor,
       @required this.text,
       @required this.units});
 
-  void _navigateToConverter(BuildContext context, String categoryName) {
-    Navigator.of(context)
-        .pushNamed('/cover', arguments: CoverArguments(categoryName, units));
+  void _navigateToConverter(
+      BuildContext context, Color categoryColor, String categoryName) {
+    Navigator.of(context).pushNamed('/cover',
+        arguments: CoverArguments(categoryColor, categoryName, units));
   }
 
   @override
@@ -49,10 +51,10 @@ class Category extends StatelessWidget {
                 ),
               ],
             ),
-            textColor: color,
+            textColor: textColor,
             height: 100,
             onPressed: () {
-              _navigateToConverter(context, text);
+              _navigateToConverter(context, activeBackgroundColor, text);
             }));
   }
 }

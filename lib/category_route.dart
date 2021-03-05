@@ -43,7 +43,7 @@ class CategoryRoute extends StatelessWidget {
       list.add(Center(
           child: Category(
               icon: Icons.cake,
-              color: Colors.black,
+              textColor: Colors.black,
               activeBackgroundColor: _baseColors[index],
               text: categoryName,
               units: _retrieveUnitList(categoryName))));

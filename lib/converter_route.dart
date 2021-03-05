@@ -20,9 +20,10 @@ class ConverterRoute extends StatelessWidget {
     final CoverArguments args = ModalRoute.of(context).settings.arguments;
 
     final appBar = AppBar(
-        backgroundColor: Colors.green[100],
+        backgroundColor: args.categoryColor,
         elevation: 0,
-        title: Text(args.categoryName));
+        title: Text(args.categoryName,
+            style: TextStyle(fontSize: 32, color: Colors.black54)));
 
     final unitWidgets = args.units.map((Unit unit) {
       return Container(
@@ -45,7 +46,7 @@ class ConverterRoute extends StatelessWidget {
 
     return Scaffold(
         appBar: appBar,
-        backgroundColor: Colors.green[100],
+        backgroundColor: args.categoryColor,
         body: ListView(
           children: unitWidgets,
         ));
