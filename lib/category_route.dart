@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'category.dart';
 import 'unit.dart';
 
-class CategoryRoute extends StatelessWidget {
-  const CategoryRoute();
+// 使う時はWidgetクラスを呼び出す
+class CategoryRoute extends StatefulWidget {
+  @override
+  _CategoryRouteState createState() => new _CategoryRouteState();
+}
 
+// 具体的な処理はStateクラスに書く
+class _CategoryRouteState extends State<CategoryRoute> {
   static const _categoryNames = <String>[
     'Length',
     'Area',
@@ -27,16 +32,6 @@ class CategoryRoute extends StatelessWidget {
     Colors.red,
   ];
 
-  List<Unit> _retrieveUnitList(String categoryName) {
-    return List.generate(10, (int i) {
-      i += 1;
-      return Unit(
-        name: '$categoryName Unit $i',
-        conversion: i.toDouble(),
-      );
-    });
-  }
-
   List<Widget> buildCategoryList() {
     List<Widget> list = [];
     _categoryNames.asMap().forEach((index, categoryName) {
@@ -49,6 +44,16 @@ class CategoryRoute extends StatelessWidget {
               units: _retrieveUnitList(categoryName))));
     });
     return list;
+  }
+
+  List<Unit> _retrieveUnitList(String categoryName) {
+    return List.generate(10, (int i) {
+      i += 1;
+      return Unit(
+        name: '$categoryName Unit $i',
+        conversion: i.toDouble(),
+      );
+    });
   }
 
   @override
