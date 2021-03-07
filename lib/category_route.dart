@@ -10,6 +10,7 @@ class CategoryRoute extends StatefulWidget {
 
 // 具体的な処理はStateクラスに書く
 class _CategoryRouteState extends State<CategoryRoute> {
+  final _categories = <Category>[];
   static const _categoryNames = <String>[
     'Length',
     'Area',
@@ -32,10 +33,23 @@ class _CategoryRouteState extends State<CategoryRoute> {
     Colors.red,
   ];
 
-  Widget buildCategoryList(categories) {
+  @override
+  void initState() {
+    super.initState();
+    _categoryNames.asMap().forEach((index, categoryName) {
+      _categories.add(Category(
+          icon: Icons.cake,
+          textColor: Colors.black,
+          activeBackgroundColor: _baseColors[index],
+          text: categoryName,
+          units: _retrieveUnitList(categoryName)));
+    });
+  }
+
+  Widget buildCategoryWidgets() {
     return ListView.builder(
-      itemBuilder: (BuildContext context, int index) => categories[index],
-      itemCount: categories.length,
+      itemBuilder: (BuildContext context, int index) => _categories[index],
+      itemCount: _categories.length,
     );
   }
 
@@ -51,20 +65,9 @@ class _CategoryRouteState extends State<CategoryRoute> {
 
   @override
   Widget build(BuildContext context) {
-    final categories = <Category>[];
-
-    _categoryNames.asMap().forEach((index, categoryName) {
-      categories.add(Category(
-          icon: Icons.cake,
-          textColor: Colors.black,
-          activeBackgroundColor: _baseColors[index],
-          text: categoryName,
-          units: _retrieveUnitList(categoryName)));
-    });
-
     final listView = Container(
         padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: buildCategoryList(categories));
+        child: buildCategoryWidgets());
 
     final appBar = AppBar(
       backgroundColor: Colors.green[100],
