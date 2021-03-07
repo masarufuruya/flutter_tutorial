@@ -32,18 +32,11 @@ class _CategoryRouteState extends State<CategoryRoute> {
     Colors.red,
   ];
 
-  List<Widget> buildCategoryList() {
-    List<Widget> list = [];
-    _categoryNames.asMap().forEach((index, categoryName) {
-      list.add(Center(
-          child: Category(
-              icon: Icons.cake,
-              textColor: Colors.black,
-              activeBackgroundColor: _baseColors[index],
-              text: categoryName,
-              units: _retrieveUnitList(categoryName))));
-    });
-    return list;
+  Widget buildCategoryList(categories) {
+    return ListView.builder(
+      itemBuilder: (BuildContext context, int index) => categories[index],
+      itemCount: categories.length,
+    );
   }
 
   List<Unit> _retrieveUnitList(String categoryName) {
@@ -58,9 +51,20 @@ class _CategoryRouteState extends State<CategoryRoute> {
 
   @override
   Widget build(BuildContext context) {
-    final listView = ListView(
+    final categories = <Category>[];
+
+    _categoryNames.asMap().forEach((index, categoryName) {
+      categories.add(Category(
+          icon: Icons.cake,
+          textColor: Colors.black,
+          activeBackgroundColor: _baseColors[index],
+          text: categoryName,
+          units: _retrieveUnitList(categoryName)));
+    });
+
+    final listView = Container(
         padding: const EdgeInsets.symmetric(horizontal: 8),
-        children: buildCategoryList());
+        child: buildCategoryList(categories));
 
     final appBar = AppBar(
       backgroundColor: Colors.green[100],
