@@ -1,20 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
 import 'unit.dart';
 import 'category.dart';
 
-class ConverterAppBar extends StatelessWidget {
-  final String title;
-
-  const ConverterAppBar({@required this.title});
-
+class ConverterRoute extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return AppBar(title: Text(title));
-  }
+  _ConverterRouteState createState() => _ConverterRouteState();
 }
 
-class ConverterRoute extends StatelessWidget {
+class _ConverterRouteState extends State<ConverterRoute> {
   @override
   Widget build(BuildContext context) {
     final CoverArguments args = ModalRoute.of(context).settings.arguments;
