@@ -75,11 +75,14 @@ class _ConverterRouteState extends State<ConverterRoute> {
             Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           TextField(
             style: Theme.of(context).textTheme.headline4,
+            // これを指定しないとただの下線のみのTextFiedになる
             decoration: InputDecoration(
                 labelStyle: Theme.of(context).textTheme.headline4,
                 errorText:
                     _showValidationError ? 'Invalid number entered' : null,
+                //左上のラベル
                 labelText: 'Input',
+                // TextFieldのボーダー
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(0.0))),
             keyboardType: TextInputType.number,
